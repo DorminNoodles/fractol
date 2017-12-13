@@ -4,8 +4,8 @@
 #include "mlx.h"
 #include "libft.h"
 
-# define SCREEN_WIDTH 600
-# define SCREEN_HEIGHT 600
+# define SCREEN_WIDTH 200
+# define SCREEN_HEIGHT 200
 # define WINDOW_TITLE "window title"
 
 typedef struct s_dna

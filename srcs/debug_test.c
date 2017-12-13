@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 16:27:17 by lchety            #+#    #+#             */
-/*   Updated: 2017/12/09 18:59:42 by lchety           ###   ########.fr       */
+/*   Updated: 2017/12/12 21:44:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	print_fractale(t_dna *dna)
 	t_vector	point;
 	t_rgb	rgb;
 
+	int	tmp;
+
 	rgb.r = 255;
 	rgb.g = 255;
 	rgb.b = 255;
@@ -53,18 +55,27 @@ void	print_fractale(t_dna *dna)
 		x = pos % SCREEN_WIDTH;
 		y = pos / SCREEN_WIDTH;
 
+		// if(!x)
+		// 	printf ("\n");
+		// else
+		// 	printf("%d ", x);
+
 		float	c_r = x;
 		float	c_i = y;
 		float	z_r = 0;
 		float	z_i = 0;
 		float	i = 0;
 
-		while (z < 2 && i < 50)
+		printf("%f ", z_r * z_r + z_i * z_i);
+		while (z_r * z_r + z_i * z_i < 4 && i < iteration_max)
 		{
-			z = z*z + c;
+			tmp = z_r;
+			z_r = z_r * z_r - z_i * z_i + c_r;
+			z_i = 2*z_i*tmp + c_i;
 			i++;
 		}
 
+		// printf("%f\n", i);
 		if (i == iteration_max)
 		{
 			point.x = x;
