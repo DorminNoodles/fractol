@@ -16,7 +16,7 @@ all : $(NAME)
 $(NAME) :
 	make -C	libft/
 	make -C minilibx_macos/
-	$(CC) $(SRCS) -I includes -I minilibx_macos/ -I libft/includes -I minilibx_macos -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+	$(CC) $(SRCS) libft/libft.a -I includes -I minilibx_macos/ -I libft/includes -I minilibx_macos -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 re :
 	make -C libft/ re

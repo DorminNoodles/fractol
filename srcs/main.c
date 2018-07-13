@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 12:32:32 by lchety            #+#    #+#             */
-/*   Updated: 2017/12/12 22:24:25 by lchety           ###   ########.fr       */
+/*   Updated: 2018/07/13 02:22:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int		main(int argc, char **argv)
 {
 	t_dna	dna;
-	_Bool toto;
+	bool toto;
 
-	toto = TRUE;
+	toto = true;
+
 
 	dna.mlx = mlx_init();
 	dna.win = mlx_new_window(dna.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
