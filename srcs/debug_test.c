@@ -6,31 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 16:27:17 by lchety            #+#    #+#             */
-/*   Updated: 2018/07/13 02:53:45 by lchety           ###   ########.fr       */
+/*   Updated: 2018/07/15 01:54:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void	print_pixel_img(t_dna *dna)
-{
-	t_vector a;
-	t_rgb rgb;
-
-	a.x = 50;
-	a.y = 50;
-
-	rgb.r = 255;
-	rgb.g = 0;
-	rgb.b = 255;
-
-
-	pixel_put_img(dna->img_data, a, rgb);
-
-	a.x = 75;
-	a.y = 75;
-	pixel_put_img(dna->img_data, a, rgb);
-}
 
 void	print_fractale(t_dna *dna)
 {
@@ -39,13 +19,13 @@ void	print_fractale(t_dna *dna)
 	int		x = 0;
 	int		y = 0;
 	t_vector	point;
-	t_rgb	rgb;
+	// t_rgb	rgb;
 
 	int	tmp;
 
-	rgb.r = 255;
-	rgb.g = 255;
-	rgb.b = 255;
+	// rgb.r = 255;
+	// rgb.g = 255;
+	// rgb.b = 255;
 
 
 	pos = 0;
@@ -80,7 +60,7 @@ void	print_fractale(t_dna *dna)
 		{
 			point.x = x;
 			point.y = y;
-			pixel_put_img(dna->img_data, point, rgb);
+			// pixel_put_img(dna->img_data, point, rgb);
 		}
 
 		pos++;
@@ -88,43 +68,29 @@ void	print_fractale(t_dna *dna)
 
 }
 
-void draw_square(t_dna *dna)
+void draw_square(void *img)
 {
-	int			i;
-	t_vector	point;
-	t_rgb		rgb;
-	int*		bite;
-	t_rgb* 		test;
-	void*		new;
-	char		foo[4];
-	void*		fuck;
+	t_vector v;
+	int i;
 
-	(int*)fuck = NULL;
-
-
-	// ft_bzero(foo, 4);
-
-
-	new = (void*)WHITE;
-	printf("debug\n");
-	// (int)rgb = WHITE;
-	// *((int*)&rgb) = WHITE;
-
-	// bite = (void*)123;
-	ft_memcpy((void*)&rgb, 0xFFFFFF00, 6);
-	printf("debug   %d\n", *bite);
-
-	printf("debug\n");
-
-	printf("r: %u  g: %u  b: %u\n", 3, 3,3);
-	// rgb = test;
-
-	// (void*)rgb = 0xFFF0;
 	i = 0;
 
-	while (i < 256)
+
+	printf("debug\n");
+	// (int)rgb = WHITE;
+	// *((int *)&rgb) = WHITE;
+
+	// bite = (void*)123;
+	// ft_memcpy((void*)&rgb, 0xFFFFFF00, 6);
+	// printf("debug   %d\n", *bite);
+	v.x = 0;
+	v.y = 0;
+
+	while (i < 500)
 	{
-		pixel_put_img(dna->img_data, point, rgb);
+		v.x = i / 50;
+		v.y = i % 50;
+		pixel_put_img(img, v, (t_rgba)WHITE);
 		i++;
 	}
 
@@ -134,7 +100,16 @@ void draw_square(t_dna *dna)
 
 void	debug_test(t_dna *dna)
 {
+	t_vector v;
+
+	v.x = 10;
+	v.y = 10;
 	// print_pixel_img(dna);
 	// print_fractale(dna);
-	draw_square(dna);
+	draw_square(dna->img_data);
+	pixel_put_img(dna->img_data, v, (t_rgba)WHITE);
+	v.x = 20;
+	v.y = 20;
+	pixel_put_img(dna->img_data, v, (t_rgba)WHITE);
+
 }

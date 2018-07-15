@@ -12,16 +12,7 @@
 
 #define WHITE 0x00FFFFFF
 
-typedef struct s_dna
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*img_data;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}t_dna;
+
 
 typedef struct s_vector
 {
@@ -30,15 +21,38 @@ typedef struct s_vector
 	int		z;
 }	t_vector;
 
-typedef struct s_rgb
+typedef struct s_mouse
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-}	t_rgb;
+	int		x;
+	int		y;
+}	t_mouse;
+
+typedef union u_rgba
+{
+   struct
+   {
+       unsigned char r;
+       unsigned char g;
+       unsigned char b;
+       unsigned char a;
+   };
+   int color;
+}	t_rgba;
+
+typedef struct s_dna
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	void		*img_data;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	t_mouse		mouse;
+}t_dna;
 
 void	debug_test(t_dna *dna);
-void	pixel_put_img(char *data, t_vector pos, t_rgb color);
+void	pixel_put_img(int *img, t_vector v, t_rgba color);
 void	create_img(t_dna *dna);
 int		controller(int keycode, void *param);
 
